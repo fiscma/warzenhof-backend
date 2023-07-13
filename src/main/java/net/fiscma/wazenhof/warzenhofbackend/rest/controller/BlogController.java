@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:4000", maxAge = 3600)
@@ -19,8 +20,8 @@ public class BlogController {
     BlogEntryService blogEntryService;
 
     @GetMapping(produces="application/json")
-    public String getBlog() {
-        return blogEntryService.
+    public List<BlogEntry> getBlog() {
+        return blogEntryService.findAll();
     }
 
     @GetMapping(path = "/entry/{id}", produces="application/json")

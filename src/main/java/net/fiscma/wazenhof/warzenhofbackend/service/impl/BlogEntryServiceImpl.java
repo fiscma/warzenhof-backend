@@ -7,6 +7,8 @@ import net.fiscma.wazenhof.warzenhofbackend.service.BlogEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class BlogEntryServiceImpl implements BlogEntryService {
@@ -16,5 +18,10 @@ public class BlogEntryServiceImpl implements BlogEntryService {
     @Override
     public void create(BlogEntry blogEntry) {
         blogEntryRepository.save(blogEntry);
+    }
+
+    @Override
+    public List<BlogEntry> findAll() {
+        return blogEntryRepository.findAll();
     }
 }
