@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<changeSet  author="fiscma"  id="1">
+    <createTable tableName="dish">
+        <column  name="id"  type="BIGINT">
+            <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+        </column>
+        <column  name="name"  type="VARCHAR(255)" />
+    </createTable>
+</changeSet>

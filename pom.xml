@@ -38,6 +38,11 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -58,6 +63,16 @@
 			<artifactId>jackson-dataformat-xml</artifactId>
 			<version>2.15.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>4.21.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -65,6 +80,26 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.21.0</version>
+				<configuration>
+					<driver>org.postgresql.Driver</driver>
+					<url>dbc:postgresql://localhost:5432/warzenhof</url>
+					<username>sa</username>
+					<password>1</password>
+					<outputChangeLogFile>src/main/resources/liquibase-outputChangeLog.xml</outputChangeLogFile>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
