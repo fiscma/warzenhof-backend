@@ -16,33 +16,6 @@ import java.util.List;
 @CrossOrigin(origins = "http://127.0.0.1:4000", maxAge = 3600)
 @RequestMapping("blog")
 public class BlogController {
-    @Autowired
-    BlogClient blogClient;
 
-    @Autowired
-    DtoMapper<BlogEntry> mapper;
-
-    @Autowired
-    BlogEntryService blogEntryService;
-
-    @GetMapping(produces="application/json")
-    public List<BlogEntry> findAll() {
-        return blogEntryService.findAll();
-    }
-
-    @GetMapping(path = "/entry/{id}", produces="application/json")
-    public String getEntry(@PathVariable String id) {
-        return String.valueOf(blogEntryService.findById(Long.valueOf(id)));
-    }
-
-    @PostMapping(path = "/entry/create/")
-    public void create(@RequestBody BlogEntry request) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        BlogEntry blogEntry = new BlogEntry();
-        blogEntry.setContent(request.getContent());
-        blogEntry.setCreated(new Date());
-        blogEntry.setUpdated(new Date());
-        blogEntryService.save(request);
-    }
 
 }

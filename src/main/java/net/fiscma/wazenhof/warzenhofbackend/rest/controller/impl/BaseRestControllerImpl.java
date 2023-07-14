@@ -4,8 +4,11 @@ import net.fiscma.wazenhof.warzenhofbackend.rest.controller.BaseRestController;
 import net.fiscma.wazenhof.warzenhofbackend.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 public abstract class BaseRestControllerImpl<T> implements BaseRestController<T> {
     protected final static String MAPPING_FIND_ALL = "get";
@@ -19,25 +22,27 @@ public abstract class BaseRestControllerImpl<T> implements BaseRestController<T>
 
     @Override
     @GetMapping("")
-    public ResponseEntity<Page<T>> findAll() {
-        return null;
+    public ResponseEntity<List<T>> findAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @Override
     @GetMapping("/{id}")
     public ResponseEntity<T> findById(@PathVariable Long id) {
-        return null;
+        return ResponseEntity.ok(service.get(id));
     }
 
     @Override
     @PostMapping("")
     public ResponseEntity<T> save(@RequestBody T entity) {
-        return null;
+        return ResponseEntity.ok(service.create(entity));
     }
+
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
-        return null;
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+       service.delete(id);
+       return ResponseEntity.ok("OK");
     }
 }

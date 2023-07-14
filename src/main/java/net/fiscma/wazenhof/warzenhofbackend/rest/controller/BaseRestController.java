@@ -7,11 +7,12 @@ import java.util.List;
 
 public interface BaseRestController<T> {
 
-    public ResponseEntity<Page<T>> findAll();
+    ResponseEntity<List<T>> findAll();
 
-    public ResponseEntity<T> findById(Long id);
+    ResponseEntity<T> findById(Long id);
 
-    public ResponseEntity<Boolean> delete(Long id);
+    ResponseEntity<String> delete(Long id);
 
-    public ResponseEntity<T> save(T entity);
+    ResponseEntity<T> save(T entity);
+
 }
