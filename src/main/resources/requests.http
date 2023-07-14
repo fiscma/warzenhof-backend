@@ -1,25 +1,6 @@
-POST http://localhost:4000/create
+POST http://localhost:4000/api/dish
 Content-Type: application/json
 
-{
-  "name": "Mobrid Egnel!"
-}
+{"name": "Nasenrammeln im Natursaftl"}
 
-
-POST http://localhost:4000/create
-Content-Type: application/json
-
-{
-  "name": "Knibel Knorz"
-}
-
-
-POST http://localhost:4000/create
-Content-Type: application/json
-
-{
-  "text": "Maybaum"
-}
-
-
-GET http://localhost:4000/
+###

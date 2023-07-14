@@ -21,26 +21,26 @@ public abstract class BaseRestControllerImpl<T> implements BaseRestController<T>
     protected BaseService<T> service;
 
     @Override
-    @GetMapping("")
+    @GetMapping(path = "", produces = "application/json")
     public ResponseEntity<List<T>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
     @Override
-    @GetMapping("/{id}")
+    @GetMapping(path ="/{id}", produces = "application/json")
     public ResponseEntity<T> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.get(id));
     }
 
     @Override
-    @PostMapping("")
+    @PostMapping(path="", produces = "application/json")
     public ResponseEntity<T> save(@RequestBody T entity) {
         return ResponseEntity.ok(service.create(entity));
     }
 
 
     @Override
-    @DeleteMapping("/{id}")
+    @DeleteMapping(path="/{id}", produces = "application/json")
     public ResponseEntity<String> delete(@PathVariable Long id) {
        service.delete(id);
        return ResponseEntity.ok("OK");
