@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class DtoMapper<T extends DTO> extends ObjectMapper {
+public class DtoMapper<T> extends ObjectMapper {
     @PostConstruct
     private void init() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");

@@ -9,7 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class BlogEntryDTO extends DTO {
+public class BlogEntryDTO {
     private Long id;
     private String content;
     private Date created;

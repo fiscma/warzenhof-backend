@@ -9,6 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class BlogDTO extends DTO{
+public class BlogDTO {
     private List<BlogEntryDTO> blogEntryDTOList;
 }
