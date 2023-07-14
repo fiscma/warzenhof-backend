@@ -1,0 +1,23 @@
+version: '3.8'
+
+
+services:
+  postgres:
+    container_name: postgres_warzenhof
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: warzenhof
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: 1
+      PGDATA: /data/postgres
+    volumes:
+       - ./tmp/postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+
+volumes:
+  postgres-db:
+    driver: local
+
