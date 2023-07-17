@@ -1,6 +1,6 @@
 POST http://localhost:4000/api/dish
 Content-Type: application/json
 
-{"name": "Nasenrammeln im Natursaftl"}
+{"name": "Leguan tonnato"}
 
 ###

@@ -38,7 +38,6 @@ public abstract class BaseRestControllerImpl<T> implements BaseRestController<T>
         return ResponseEntity.ok(service.create(entity));
     }
 
-
     @Override
     @DeleteMapping(path="/{id}", produces = "application/json")
     public ResponseEntity<String> delete(@PathVariable Long id) {
