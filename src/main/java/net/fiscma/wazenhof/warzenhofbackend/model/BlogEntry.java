@@ -9,6 +9,7 @@ import java.util.Date;
 
 public class BlogEntry {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Basic
     @Column(name = "CONTENT")
@@ -19,6 +20,10 @@ public class BlogEntry {
     @Basic
     @Column(name = "UPDATED")
     private Date updated;
+
+    @Basic
+    @Column(name = "title")
+    private String title;
 
     public Long getId() {
         return id;
@@ -52,4 +57,11 @@ public class BlogEntry {
         this.updated = updated;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
