@@ -1,15 +1,19 @@
 package net.fiscma.wazenhof.warzenhofbackend;
 
-import jakarta.servlet.*;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.faces.webapp.FacesServlet;
 import java.util.Arrays;
 
 @SpringBootApplication
+@EnableWebMvc
+@EnableAutoConfiguration
 public class WarzenhofBackendApplication {
 
 	public static void main(String[] args) {
@@ -17,15 +21,9 @@ public class WarzenhofBackendApplication {
 	}
 
 	@Bean
-	public ServletRegistrationBean servletRegistrationBean(ServletContext servletContext) {
-		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-
-		//registration
-		ServletRegistrationBean srb = new ServletRegistrationBean();
-		srb.setServlet(new FacesServlet());
-		srb.setUrlMappings(Arrays.asList("*.xhtml"));
-		srb.setLoadOnStartup(1);
-		return srb;
+	public ServletRegistrationBean servletRegistrationBean() {
+		FacesServlet servlet = new FacesServlet();
+		return new ServletRegistrationBean();
 	}
 
 }
